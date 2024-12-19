@@ -51,6 +51,13 @@ def main():
         required=True
     )
     parser.add_argument(
+        "-a",
+        "--application",
+        help="Applications to add, requires 1 or more.",
+        action="append",
+        required=True
+    )
+    parser.add_argument(
         "-d",
         "--description",
         help="Description of the collection.",
@@ -63,18 +70,11 @@ def main():
         required=False
     )
     parser.add_argument(
-        "-a",
-        "--application",
-        help="Applications to add, requires 1 or more.",
-        action="append",
-        required=True
-    )
-    parser.add_argument(
         "-c",
         "--custom_field",
-        help="(Optional) Colon(:)-separated key-value pairs for the custom fields to set, takes 0 or more. I.e.: A Field:Some Value",
+        help="(optional) Colon(:)-separated key-value pairs for the custom fields to set, takes 0 or more. I.e.: A Field:Some Value.",
         action="append",
-        required=True
+        required=False
     )
     parser.add_argument(
         "-k",
