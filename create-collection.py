@@ -42,7 +42,7 @@ def parse_custom_field(custom_field):
 
 def main():
     parser = argparse.ArgumentParser(
-        description="This script allows for the creation of Custom User Roles in Veracode."
+        description="This script allows for the creation of Collections in Veracode."
     )
     parser.add_argument(
         "-n",
