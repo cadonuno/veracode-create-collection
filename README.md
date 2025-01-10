@@ -23,13 +23,13 @@ Install dependencies:
 
 If you have saved credentials as above you can run:
 
-    python create-collection.py(arguments)
+    python create-collection.py (arguments)
 
 Otherwise you will need to set environment variables:
 
     export VERACODE_API_KEY_ID=<YOUR_API_KEY_ID>
     export VERACODE_API_KEY_SECRET=<YOUR_API_KEY_SECRET>
-    python create-custom-roles.py (arguments)
+    python create-collection.py (arguments)
     
 
 * `--name`, `-n`  Name of the collection to create
@@ -38,19 +38,3 @@ Otherwise you will need to set environment variables:
 * `--business_unit`, `-b` (optional): Name of the Business unit to assign to the collection.
 * `--custom_field`, `-c`(optional): Colon(:)-separated key-value pairs for the custom fields to set, takes 0 or more. I.e.: A Field:Some Value".
 * `--keep`, `-l` (optional flag): if a collection with this name already exists, will add the applications to it (Defaults to false) - if this is not set, the step will fail instead.
-
-
-    parser.add_argument(
-        "-c",
-        "--custom_field",
-        help="(Optional) Colon(:)-separated key-value pairs for the custom fields to set, takes 0 or more. I.e.: A Field:Some Value",
-        action="append",
-        required=True
-    )
-    parser.add_argument(
-        "-k",
-        "--keep",
-        help="If a collection with this name already exists, will add the applications to it (Defaults to false) - if this is not set, the step will fail instead.",
-        required=False, 
-        action=argparse.BooleanOptionalAction
-    )
