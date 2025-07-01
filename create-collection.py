@@ -16,8 +16,8 @@ def get_application_ids(applications):
             if match["profile"]["name"] == application.strip():
                 application_ids.append(match["guid"])
                 break
-            print(f"Application named '{application}' not found")
-            sys.exit(-1)
+        print(f"Application named '{application}' not found")
+        sys.exit(-1)
     return application_ids
 
 def get_business_unit_id(business_unit):
