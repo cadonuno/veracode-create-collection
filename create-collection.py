@@ -85,7 +85,12 @@ def main():
     )
 
     args = parser.parse_args()
-    collection_id = Collections().get_by_name(args.name)
+    collections = Collections().get_by_name(args.name)
+    collection_id = None
+    for collection in collections:
+        if collection["name"] == args.name:
+            collection_id = collection["guid"]
+            break
 
     if collection_id and not args.keep:
         print("A collection with this name already exists")
@@ -93,8 +98,8 @@ def main():
         sys.exit(-1)
 
     application_list = get_application_ids(args.application)
-    business_unit_id = get_business_unit_id(args.business_unit)
-    custom_fields = None if not args.custom_field else list(map(parse_custom_field, args.custom_field))
+    business_unit_id = get_business_unit_id(args.business_unit) if args.business_unit else None
+    custom_fields = [] if not args.custom_field else list(map(parse_custom_field, args.custom_field))
 
     if not collection_id:
         Collections().create(
