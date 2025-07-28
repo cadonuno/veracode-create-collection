@@ -9,15 +9,18 @@ def get_application_ids(applications):
     application_ids = []
     for application in applications:
         matches = Applications().get_by_name(application)
+        has_found = False
         if not matches or len(matches) == 0:
             print(f"Application named '{application}' not found")
             sys.exit(-1)
         for match in matches:
             if match["profile"]["name"] == application.strip():
                 application_ids.append(match["guid"])
+                has_found = True
                 break
-        print(f"Application named '{application}' not found")
-        sys.exit(-1)
+        if not has_found:
+            print(f"Application named '{application}' not found")
+            sys.exit(-1)
     return application_ids
 
 def get_business_unit_id(business_unit):
